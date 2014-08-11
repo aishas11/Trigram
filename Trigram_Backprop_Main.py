@@ -96,14 +96,13 @@ print "Final Test CE = " + str(Test_CE)
 # if you want to show nearest words 
 if show_word_neighbors: 
 	w_inp_hid1_final = weights_biases_List[0].get_value()
-	np.savetxt('wew.csv',w_inp_hid1_final)
 	vocab_words = FileReader.FileReader(os.path.join(dataFiles_Path,'vocab.csv')).csv_1RowStr_to_list()
 	mappedX = tsne.tsne(w_inp_hid1_final)
 	fig = Plot.figure(figsize=(15,8),dpi=100)
 	for a, b, label in zip(mappedX[:,0],mappedX[:,1],vocab_words): 
 		Plot.text(a,b,label)
 	Plot.title('Distributed Word Representation Learned by Network - words spatially close also have similar distributed representations in the model')
-	Plot.axis([-35, 35, -35, 35])
+	Plot.axis([-25, 25, -25, 25])
 	Plot.subplots_adjust(left=.05, bottom=.05, right=.95, top=.95, wspace=.2, hspace=.2)
 	Plot.savefig('fig1.jpg', dpi=100)
 	Plot.show()
